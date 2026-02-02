@@ -1,4 +1,3 @@
-# products/services/product_sync_service.py
 import requests
 from datetime import datetime
 from django.db import transaction
@@ -7,12 +6,10 @@ import hashlib
 from decouple import config
 
 FASTPRINT_API_URL = config('FASTPRINT_API_URL')
-# FASTPRINT_API_URL = "https://recruitment.fastprint.co.id/tes/api_tes_programmer"
 
-def generate_password_plain():
+def generate_password():
     now = datetime.now()
     return f"bisacoding-{now.day:02d}-{now.month:02d}-{str(now.year)[-2:]}"
-
 
 def md5_encode(text: str):
     return hashlib.md5(text.encode("utf-8")).hexdigest()
@@ -20,7 +17,7 @@ def md5_encode(text: str):
 
 def sync_products(username: str, password: str = None):
     if password is None:
-        password = generate_password_plain()
+        password = generate_password()
 
     password_md5 = md5_encode(password)
 
@@ -39,10 +36,8 @@ def sync_products(username: str, password: str = None):
 
     with transaction.atomic():
         for item in products:
-            # Debug print
             print(f"Processing: {item['nama_produk']} | Category: {item['kategori']} | Status: {item['status']}")
 
-            # Pastikan Category & Status tersimpan
             category, created_cat = Category.objects.get_or_create(name=item["kategori"])
             status, created_status = Status.objects.get_or_create(name=item["status"])
 
@@ -51,11 +46,9 @@ def sync_products(username: str, password: str = None):
             if created_status:
                 print(f"Created new Status: {status.name} (ID: {status.id})")
 
-            # Simpan Product
-            product, created_prod = Product.objects.update_or_create(
-                product_id=item["id_produk"],
+            product, created_prod = Product.objects.get_or_create(
+                name=item["nama_produk"],
                 defaults={
-                    "name": item["nama_produk"],
                     "price": int(item["harga"]),
                     "category": category,
                     "status": status

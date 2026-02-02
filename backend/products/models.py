@@ -12,7 +12,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
 class Status(models.Model):
     name = models.CharField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,24 +25,18 @@ class Status(models.Model):
 
 
 class Product(models.Model):
-    # ID from external API (Fastprint)
-    product_id = models.IntegerField(unique=True)
-
     name = models.CharField(max_length=255)
-    price = models.IntegerField()
-
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
         related_name="products"
     )
-
     status = models.ForeignKey(
         Status,
         on_delete=models.CASCADE,
         related_name="products"
     )
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
