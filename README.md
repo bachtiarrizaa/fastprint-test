@@ -101,7 +101,7 @@ npm start
 
 ---
 
-## Tips
+<!-- ## Tips
 
 * Untuk test API, bisa gunakan **Postman**:
 
@@ -117,7 +117,7 @@ npm start
 
 * Virtual environment **hanya di backend**, frontend pakai Node.js / npm.
 
-* Untuk field `price` gunakan angka, `name` tidak boleh kosong, `category_id` dan `status_id` wajib diisi.
+* Untuk field `price` gunakan angka, `name` tidak boleh kosong, `category_id` dan `status_id` wajib diisi. -->
 
 <!-- ---
 
