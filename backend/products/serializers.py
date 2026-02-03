@@ -43,9 +43,22 @@ class ProductUpdateSerializer(serializers.ModelSerializer):
         return value
 
 class ProductListSerializer(serializers.ModelSerializer):
-    category = serializers.StringRelatedField()
-    status = serializers.StringRelatedField()
+    category_id = serializers.IntegerField(source="category.id", read_only=True)
+    category = serializers.CharField(source="category.name", read_only=True)
+
+    status_id = serializers.IntegerField(source="status.id", read_only=True)
+    status = serializers.CharField(source="status.name", read_only=True)
 
     class Meta:
         model = Product
-        fields = ["id", "name", "price", "category", "status", "created_at", "updated_at"]
+        fields = [
+            "id",
+            "name",
+            "price",
+            "category_id",
+            "category",
+            "status_id",
+            "status",
+            "created_at",
+            "updated_at"
+        ]
