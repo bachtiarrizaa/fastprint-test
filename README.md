@@ -109,22 +109,22 @@ http://127.0.0.1:8000/
 
 ## 📡 API Endpoint Product
 
-| Method | Endpoint               | Deskripsi                                   |
-| ------ | ---------------------- | ------------------------------------------- |
-| POST   | `/api/products/sync/`  | Sinkronisasi data produk dari Fastprint API |
-| GET    | `/api/products/list/`  | List semua produk                           |
-| POST   | `/api/products/create/`| Tambah produk                               |
-| PUT    | `/api/products/<id>/`  | Update produk                               |
-| DELETE | `/api/products/<id>/`  | Hapus produk                                |
+| Method | Endpoint                    | Deskripsi                                   |
+| ------ | --------------------------- | ------------------------------------------- |
+| POST   | `/api/products/sync/`       | Sinkronisasi data produk dari Fastprint API |
+| GET    | `/api/products/list/`       | List semua produk                           |
+| POST   | `/api/products/create/`     | Tambah produk                               |
+| PUT    | `/api/products/<id>/update/`| Update produk                               |
+| DELETE | `/api/products/<id>/delet/` | Hapus produk                                |
 
 ## 📡 API Endpoint Category
 
-| Method | Endpoint                       | Deskripsi                                     |
-| ------ | ------------------------------ | --------------------------------------------- |
-| GET    | `/api/categories/`             | List semua kategori                           |
-| POST   | `/api/categories/`             | Tambah kategori                               |
-| PUT    | `/api/categories/<id>/update/` | Update kategori                               |
-| DELETE | `/api/categories/<id>/delete/` | Hapus kategori                                |
+| Method | Endpoint                       | Deskripsi                                |
+| ------ | ------------------------------ | -----------------------------------------|
+| GET    | `/api/categories/`             | List semua kategori                      |
+| POST   | `/api/categories/`             | Tambah kategori                          |
+| PUT    | `/api/categories/<id>/update/` | Update kategori                          |
+| DELETE | `/api/categories/<id>/delete/` | Hapus kategori                           |
 
 
 ### Contoh Body Sync API
