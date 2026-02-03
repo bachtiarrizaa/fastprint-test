@@ -161,7 +161,7 @@ export default function ProductPage() {
               placeholder="Masukkan nama produk"
               value={form.name}
               onChange={handleChange}
-              className="mt-1 w-full border border-gray-300 rounded-md p-2 text-sm"
+              className="mt-1 w-full border border-gray-400 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>
@@ -174,7 +174,7 @@ export default function ProductPage() {
               name="price"
               value={form.price}
               onChange={handleChange}
-              className="mt-1 w-full border border-gray-300 rounded-md p-2 text-sm"
+              className="mt-1 w-full border border-gray-400 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>

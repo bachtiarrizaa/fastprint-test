@@ -14,6 +14,35 @@ export const useProducts = () => {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  const syncProducts = async ({ username, password }) => {
+    if (!username || !password) {
+      alert("Username dan password wajib diisi");
+      return;
+    }
+
+    const confirmed = window.confirm(
+      "Ambil data produk dari API external?"
+    );
+    if (!confirmed) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      await productService.syncProducts({ username, password });
+
+      await getProducts();
+
+      alert("Berhasil mengambil data produk 🎉");
+    } catch (err) {
+      console.error(err);
+      setError("Gagal mengambil data produk");
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getProducts = useCallback(async () => {
     setLoading(true);
@@ -137,6 +166,7 @@ export const useProducts = () => {
     loading,
     error,
 
+    syncProducts,
     getProducts,
     createProduct,
     updateProduct,

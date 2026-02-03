@@ -143,9 +143,10 @@ export default function CategoryPage() {
             <input
               type="text"
               name="name"
+              placeholder="Masukkan nama kategori"
               value={form.name}
               onChange={handleChange}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 text-sm"
+              className="mt-1 block w-full border border-gray-400 rounded-lg p-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>
@@ -153,12 +154,13 @@ export default function CategoryPage() {
             <button
               type="button"
               onClick={closeModal}
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+              className="px-4 py-2 bg-gray-200 rounded"
             >
               Batal
             </button>
             <button
               type="submit"
+              disabled={loading}
               className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
               {editingId ? "Update" : "Tambah"}
