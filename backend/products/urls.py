@@ -4,13 +4,13 @@ from products.views import (
     ProductCreateView,
     ProductListView,
     ProductUpdateView,
-    ProductDeleteView
+    ProductDeleteView,
 )
 
 urlpatterns = [
-    path("products/sync/", ProductSyncView.as_view(), name="product-sync"),
-    path("products/", ProductCreateView.as_view(), name="product-create"),
-    path("products/list/", ProductListView.as_view(), name="product-list"),
-    path("products/<int:id>/", ProductUpdateView.as_view(), name="product-update"),
-    path("products/<int:id>/delete/", ProductDeleteView.as_view(), name="product-delete"),
+    path("sync/", ProductSyncView.as_view(), name="product-sync"),
+    path("create/", ProductCreateView.as_view(), name="product-create"),
+    path("list/", ProductListView.as_view(), name="product-list"),
+    path("<int:id>/update/", ProductUpdateView.as_view(), name="product-update"),
+    path("<int:id>/delete/", ProductDeleteView.as_view(), name="product-delete"),
 ]

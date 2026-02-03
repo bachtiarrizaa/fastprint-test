@@ -1,7 +1,8 @@
 import requests
 from datetime import datetime
 from django.db import transaction
-from products.models import Product, Category, Status
+from products.models import Product, Status
+from categories.models import Category
 import hashlib
 from decouple import config
 
@@ -13,7 +14,6 @@ def generate_password():
 
 def md5_encode(text: str):
     return hashlib.md5(text.encode("utf-8")).hexdigest()
-
 
 def sync_products(username: str, password: str = None):
     if password is None:

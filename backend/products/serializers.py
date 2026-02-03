@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from products.models import Product, Category, Status
+from products.models import Product, Status
+from categories.models import Category
 
 class ProductCreateSerializer(serializers.ModelSerializer):
     name = serializers.CharField(required=True, max_length=255)

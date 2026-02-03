@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
-from products.models import Product, Category, Status
+from products.models import Product, Status
+from categories.models import Category
 
 class ProductRepository:
 
