@@ -92,7 +92,6 @@ export default function IndexPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* CARD PRODUK */}
         <div className="bg-white p-6 border rounded-2xl shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
             <FontAwesomeIcon
@@ -108,7 +107,6 @@ export default function IndexPage() {
           </div>
         </div>
 
-        {/* CARD KATEGORI */}
         <div className="bg-blue-50 p-6 border border-blue-100 rounded-2xl shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-blue-200 flex items-center justify-center">
             <FontAwesomeIcon

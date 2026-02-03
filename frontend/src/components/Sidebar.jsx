@@ -19,7 +19,6 @@ export default function Sidebar() {
 
       <div className="flex flex-col justify-between flex-1">
         <nav className="space-y-3">
-          {/* Header Sidebar */}
           <div className="px-3 flex items-center justify-between py-2 text-gray-600 border-b border-b-gray-200">
             {isOpen && (
               <div className="flex items-center justify-center transition-opacity duration-300">

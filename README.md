@@ -1,46 +1,80 @@
 # Fastprint Project
 
-Project ini terdiri dari:
+Aplikasi ini dibuat untuk kebutuhan **Tes Programmer Fastprint**, terdiri dari **Backend API (Django)** dan **Frontend Admin Dashboard (React)**.
 
-* **Backend**: Django + Django REST Framework (API)
-* **Frontend**: React (Client)
+---
+
+## Tech Stack
+
+* **Backend**: Django, Django REST Framework
+* **Frontend**: React + Vite, Tailwind CSS
+* **Database**: PostgreSql
+* **External API**: Fastprint Product API
 
 ---
 
 ## Struktur Project
 
-```
+```bash
 fastprint/
-├─ backend/
-│   ├─ manage.py
-│   ├─ backend/        # settings.py, urls.py
-│   ├─ products/       # Django app
-│   └─ venv/           # virtual environment Python
-├─ frontend/
-│   ├─ package.json
-│   └─ node_modules/   # dependencies React
-└─ README.md
+├── backend/
+│   ├── manage.py
+│   ├── backend/
+│   ├── products/
+│   ├── categories/
+│   ├── requirements.txt
+│   ├── .env
+│   └── venv/
+│
+├── frontend/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+│
+└── README.md
 ```
 
 ---
 
-## Backend (Django)
+# 🚀 Backend (Django)
 
-### 1. Aktifkan Virtual Environment
+## 1. Masuk ke folder backend
 
 ```bash
 cd backend
-source venv/bin/activate      # Linux / macOS
-venv\Scripts\activate         # Windows
 ```
 
-### 2. Install Dependencies
+## 2. Aktifkan Virtual Environment
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+> Jika belum ada `venv`, buat terlebih dahulu:
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Konfigurasi Environment
+---
+
+## 4. Konfigurasi Environment
 
 Buat file `.env` di folder `backend/`:
 
@@ -48,79 +82,127 @@ Buat file `.env` di folder `backend/`:
 FASTPRINT_API_URL=https://recruitment.fastprint.co.id/tes/api_tes_programmer
 ```
 
-### 4. Jalankan Migration
+---
+
+## 5. Jalankan Migration Database
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 5. Jalankan Server
+---
+
+## 6. Jalankan Server Backend
 
 ```bash
 python manage.py runserver
 ```
 
-* Server akan berjalan di: `http://127.0.0.1:8000/`
+Backend akan berjalan di:
 
-### 6. API Endpoint
-
-| Method | URL                                 | Keterangan                                           |
-| ------ | ----------------------------------- | ---------------------------------------------------- |
-| POST   | `/api/products/sync/`               | Sinkronisasi produk dari Fastprint API               |
-| POST   | `/api/products/`                    | Tambah product baru                                  |
-| GET    | `/api/products/`                    | List semua product                                   |
-| GET    | `/api/products/?status=bisa dijual` | List product dengan status tertentu                  |
-| PUT    | `/api/products/<id>/`               | Update product (name, price, category_id, status_id) |
-| DELETE | `/api/products/<id>/`               | Hapus product                                        |
+```
+http://127.0.0.1:8000/
+```
 
 ---
 
-## Frontend (React)
+## 📡 API Endpoint Product
 
-### 1. Masuk ke folder frontend
+| Method | Endpoint               | Deskripsi                                   |
+| ------ | ---------------------- | ------------------------------------------- |
+| POST   | `/api/products/sync/`  | Sinkronisasi data produk dari Fastprint API |
+| GET    | `/api/products/list/`  | List semua produk                           |
+| POST   | `/api/products/create/`| Tambah produk                               |
+| PUT    | `/api/products/<id>/`  | Update produk                               |
+| DELETE | `/api/products/<id>/`  | Hapus produk                                |
+
+## 📡 API Endpoint Category
+
+| Method | Endpoint                       | Deskripsi                                     |
+| ------ | ------------------------------ | --------------------------------------------- |
+| GET    | `/api/categories/`             | List semua kategori                           |
+| POST   | `/api/categories/`             | Tambah kategori                               |
+| PUT    | `/api/categories/<id>/update/` | Update kategori                               |
+| DELETE | `/api/categories/<id>/delete/` | Hapus kategori                                |
+
+
+### Contoh Body Sync API
+
+```json
+{
+  "username": "tesprogrammer030226C22",
+  "password": "bisacoding-03-02-26"
+}
+```
+
+---
+
+# 🎨 Frontend (React)
+
+## 1. Masuk ke folder frontend
 
 ```bash
 cd frontend
 ```
 
-### 2. Install dependencies
+---
+
+## 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Jalankan React Dev Server
+---
+
+## 3. Jalankan Frontend Dev Server
 
 ```bash
-npm start
+npm run dev
 ```
 
-* React dev server akan berjalan di: `http://localhost:3000/`
-* Pastikan **backend Django juga sedang berjalan** untuk akses API
+Frontend akan berjalan di:
+
+```
+http://localhost:5173/
+```
+
+> ⚠️ Pastikan **backend Django sudah berjalan** agar frontend bisa mengakses API.
 
 ---
 
-<!-- ## Tips
+# 🧩 Alur Aplikasi
 
-* Untuk test API, bisa gunakan **Postman**:
+1. Saat pertama kali aplikasi dijalankan:
 
-  * Endpoint `/api/products/sync/` → body JSON:
+   * Data produk masih kosong
+   * Dashboard akan menampilkan **form sinkronisasi produk**
 
-    ```json
-    {
-      "username": "tesprogrammer020226C16",
-      "password": "bisacoding-02-02-26"
-    }
-    ```
-  * Endpoint CRUD `/api/products/` → body sesuai schema product
+2. User mengisi:
 
-* Virtual environment **hanya di backend**, frontend pakai Node.js / npm.
+   * Username
+   * Password (format: `bisacoding-dd-mm-yy`)
 
-* Untuk field `price` gunakan angka, `name` tidak boleh kosong, `category_id` dan `status_id` wajib diisi. -->
+3. Klik **Sync Produk**:
 
-<!-- ---
+   * Backend mengambil data dari Fastprint API
+   * Data **produk, kategori, dan status** otomatis tersimpan ke database
+
+4. Setelah berhasil:
+
+   * Dashboard menampilkan **Total Produk**
+   * Dashboard menampilkan **Total Kategori**
+   * Produk dapat dilakukan **CRUD (Create, Read, Update, Delete)**
+
+---
+
+## 🧪 Dokumentasi Testing API menggunakan Postman 
+
+```
+https://documenter.getpostman.com/view/41956571/2sBXc7LPwm
+```
 
 ## License
 
-MIT -->
+bachtiarrizaa
