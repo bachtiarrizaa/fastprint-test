@@ -8,7 +8,7 @@ Aplikasi ini dibuat untuk kebutuhan **Tes Programmer Fastprint**, terdiri dari *
 
 * **Backend**: Django, Django REST Framework
 * **Frontend**: React + Vite, Tailwind CSS
-* **Database**: PostgreSql
+* **Database**: PostgreSQL
 * **External API**: Fastprint Product API
 
 ---
@@ -29,7 +29,8 @@ fastprint/
 ├── frontend/
 │   ├── src/
 │   ├── package.json
-│   └── vite.config.js
+│   ├── vite.config.js
+│   └── .env
 │
 └── README.md
 ```
@@ -74,14 +75,22 @@ pip install -r requirements.txt
 
 ---
 
-## 4. Konfigurasi Environment
+## 4. Konfigurasi env Backend
 
-Buat file `.env` di folder `backend/`:
+Buat file `.env` di folder `backend/` dengan menyalin file contoh:
 
-```env
-FASTPRINT_API_URL=https://recruitment.fastprint.co.id/tes/api_tes_programmer
+```bash
+cp .env.example .env
 ```
-
+>
+> ```env
+> FASTPRINT_API_URL=https://recruitment.fastprint.co.id/tes/api_tes_programmer
+> DB_NAME=fastprintdb
+> DB_USER=postgres
+> DB_PASSWORD=
+> DB_HOST=localhost
+> DB_PORT=5432 
+```
 ---
 
 ## 5. Jalankan Migration Database
@@ -109,23 +118,22 @@ http://127.0.0.1:8000/
 
 ## 📡 API Endpoint Product
 
-| Method | Endpoint                    | Deskripsi                                   |
-| ------ | --------------------------- | ------------------------------------------- |
-| POST   | `/api/products/sync/`       | Sinkronisasi data produk dari Fastprint API |
-| GET    | `/api/products/list/`       | List semua produk                           |
-| POST   | `/api/products/create/`     | Tambah produk                               |
-| PUT    | `/api/products/<id>/update/`| Update produk                               |
-| DELETE | `/api/products/<id>/delet/` | Hapus produk                                |
+| Method | Endpoint                     | Deskripsi                                   |
+| ------ | ---------------------------- | ------------------------------------------- |
+| POST   | `/api/products/sync/`        | Sinkronisasi data produk dari Fastprint API |
+| GET    | `/api/products/list/`        | List semua produk                           |
+| POST   | `/api/products/create/`      | Tambah produk                               |
+| PUT    | `/api/products/<id>/update/` | Update produk                               |
+| DELETE | `/api/products/<id>/delete/` | Hapus produk                                |
 
 ## 📡 API Endpoint Category
 
-| Method | Endpoint                       | Deskripsi                                |
-| ------ | ------------------------------ | -----------------------------------------|
-| GET    | `/api/categories/`             | List semua kategori                      |
-| POST   | `/api/categories/`             | Tambah kategori                          |
-| PUT    | `/api/categories/<id>/update/` | Update kategori                          |
-| DELETE | `/api/categories/<id>/delete/` | Hapus kategori                           |
-
+| Method | Endpoint                       | Deskripsi           |
+| ------ | ------------------------------ | ------------------- |
+| GET    | `/api/categories/`             | List semua kategori |
+| POST   | `/api/categories/`             | Tambah kategori     |
+| PUT    | `/api/categories/<id>/update/` | Update kategori     |
+| DELETE | `/api/categories/<id>/delete/` | Hapus kategori      |
 
 ### Contoh Body Sync API
 
@@ -154,6 +162,17 @@ cd frontend
 npm install
 ```
 
+## 3. Konfigurasi .env Frontend
+
+Buat file `.env` di folder `frontend/` dengan menyalin file contoh:
+
+```bash
+cp .env.example .env
+```
+
+> File `.env.example` sudah berisi variabel default untuk konfigurasi frontend.
+
+
 ---
 
 ## 3. Jalankan Frontend Dev Server
@@ -172,7 +191,7 @@ http://localhost:5173/
 
 ---
 
-# 🧩 Alur Aplikasi
+# 🤖 Alur Aplikasi
 
 1. Saat pertama kali aplikasi dijalankan:
 
@@ -197,7 +216,7 @@ http://localhost:5173/
 
 ---
 
-## 🧪 Dokumentasi Testing API menggunakan Postman 
+## 🢮 Dokumentasi Testing API menggunakan Postman
 
 ```
 https://documenter.getpostman.com/view/41956571/2sBXc7LPwm
