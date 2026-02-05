@@ -111,7 +111,7 @@ python manage.py runserver
 Backend akan berjalan di:
 
 ```
-http://127.0.0.1:8000/
+http://127.0.0.1:8000/api
 ```
 
 ---
@@ -169,13 +169,14 @@ Buat file `.env` di folder `frontend/` dengan menyalin file contoh:
 ```bash
 cp .env.example .env
 ```
-
-> File `.env.example` sudah berisi variabel default untuk konfigurasi frontend.
-
+>
+> ```env
+> VITE_API_BASE=http://localhost:8000/api
+```
 
 ---
 
-## 3. Jalankan Frontend Dev Server
+## 4. Jalankan Frontend Dev Server
 
 ```bash
 npm run dev
