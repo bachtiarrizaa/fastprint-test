@@ -52,17 +52,6 @@ export default function ProductPage() {
         <ProductHeader total={products.length} />
 
         <div className="flex items-center gap-3">
-          <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <FontAwesomeIcon icon={faSearch} className="text-gray-400 text-sm" />
-            </span>
-            <input
-              type="text"
-              placeholder="Cari..."
-              className="py-2 pl-9 pr-4 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none w-full md:w-56 bg-gray-50"
-            />
-          </div>
-
           <button
             onClick={openModalCreate}
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-sm"
