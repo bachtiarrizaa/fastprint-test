@@ -201,8 +201,8 @@ http://localhost:5173/
 
 2. User mengisi:
 
-   * Username
-   * Password (format: `bisacoding-dd-mm-yy`)
+   * Username : tesprogrammer060226C10 (username akan berubah2 mengikuti waktu server FASTPRINT_API_URL)
+   * Password : (format: `bisacoding-dd-mm-yy`)
 
 3. Klik **Sync Produk**:
 
